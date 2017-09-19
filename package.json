@@ -1,0 +1,23 @@
+{
+  "name": "jpp-backoffice",
+  "version": "1.0.0",
+  "description": "JPP Backoffice",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/francescobenvenuto/jpp-backoffice.git"
+  },
+  "author": "Francesco Benvenuto",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/francescobenvenuto/jpp-backoffice/issues"
+  },
+  "homepage": "https://github.com/francescobenvenuto/jpp-backoffice#readme",
+  "dependencies": {
+    "ejs": "^2.5.7",
+    "express": "^4.15.4"
+  }
+}
