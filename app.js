@@ -15,7 +15,6 @@ app.get("/signin", function(req,res){
 	res.render("signin");
 });
 
-
 app.get("/downloads", function(req, res){
 	var downloads = [
 		{name: "PDF 1", image: "#"},
@@ -23,6 +22,10 @@ app.get("/downloads", function(req, res){
 		{name: "PDF 3", image: "#"}
 	]
 	res.render("downloads",{downloads:downloads});
+});
+
+app.get("/register", function(req, res){
+	res.render("register");
 });
 
 

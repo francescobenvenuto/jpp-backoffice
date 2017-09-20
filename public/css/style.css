@@ -74,3 +74,12 @@ body {
 #app {
   background-color: yellow;
 }
+
+.starter-template {
+  padding-top: 100px;
+  padding-bottom: 30px;
+}
+
+#register {
+  margin:30px 15px 30px 15px;
+}
