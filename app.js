@@ -1,9 +1,10 @@
 // setup 
 var express = require("express");
 var app = express();
+var path = require("path");
 
 app.set("view engine", "ejs");
-
+app.set('views', path.join(__dirname, 'views'));
 
 // routes
 app.get("/", function(req,res){
@@ -28,3 +29,5 @@ app.get("/downloads", function(req, res){
 app.listen(3001, 'localhost', function() {
   console.log("server has started!!!");
 });
+
+
