@@ -3,8 +3,8 @@ var express    = require("express"),
 	app        = express(),
     path       = require("path"),
 	bodyParser = require("body-parser"),
-	mongoose   = require("mongoose")
-
+	mongoose   = require("mongoose"),
+	nodemailer = require('nodemailer')
 
 // ES6 promises
 mongoose.Promise = Promise;
