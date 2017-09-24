@@ -6,62 +6,60 @@
         <h1>Bootstrap starter template</h1>
         <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
       </div>
-
+		<form action="/users" method="POST">
 		<div class="form-group row">
 		  <label for="example-text-input" class="col-2 col-form-label">Nome</label>
 		  <div class="col-10">
-		    <input class="form-control" type="text" placeholder="Il tuo nome" id="example-text-input">
+		    <input class="form-control" type="text" placeholder="Il tuo nome" id="example-text-input" name="jpp[name]">
 		  </div>
 		</div>
 		<div class="form-group row">
 		  <label for="example-search-input" class="col-2 col-form-label">Cognome</label>
 		  <div class="col-10">
-		    <input class="form-control" type="text" placeholder="Il tuo cognome" id="example-search-input">
+		    <input class="form-control" type="text" placeholder="Il tuo cognome" id="example-search-input" name="jpp[lastname]">
 		  </div>
 		</div>
 		<div class="form-group row">
 		  <label for="example-email-input" class="col-2 col-form-label">Email</label>
 		  <div class="col-10">
-		    <input class="form-control" type="email" placeholder="il tuo indirizzo email" id="example-email-input">
+		    <input class="form-control" type="email" placeholder="il tuo indirizzo email" id="example-email-input" name="jpp[email]">
 		  </div>
 		</div>
 		<div class="form-group row">
 		  <label for="example-url-input" class="col-2 col-form-label">Website URL</label>
 		  <div class="col-10">
-		    <input class="form-control" type="url" placeholder="l'indirizzo del tuo sito Web" id="example-url-input">
+		    <input class="form-control" type="url" placeholder="l'indirizzo del tuo sito Web" id="example-url-input" name="jpp[website]">
 		  </div>
 		</div>
 		<div class="form-group row">
 		  <label for="example-tel-input" class="col-2 col-form-label">Telephone</label>
 		  <div class="col-10">
-		    <input class="form-control" type="tel" placeholder="il tuo numero di telefono" id="example-tel-input">
+		    <input class="form-control" type="tel" placeholder="il tuo numero di telefono" id="example-tel-input" name="jpp[telephone]">
 		  </div>
 		</div>
 		<div class="form-group row">
 		  <label for="example-text-input" class="col-2 col-form-label">Indirizzo</label>
 		  <div class="col-10">
-		    <input class="form-control" type="text" placeholder="Il tuo indirizzo" value="" id="example-text-input">
+		    <input class="form-control" type="text" placeholder="Il tuo indirizzo" value="" id="example-text-input" name="jpp[address]">
 		  </div>
 		</div>
 		<div class="form-group row">
 		  <label for="example-date-input" class="col-2 col-form-label">Numero di Partita IVA</label>
 		  <div class="col-10">
-		    <input class="form-control" type="text" placeholder="IT123456789" id="example-date-input">
+		    <input class="form-control" type="text" placeholder="IT123456789" id="example-date-input" name="jpp[vatNumber]">
 		  </div>
 		</div>
 		<div class="form-group row">
 		  <label for="example-password-input" class="col-2 col-form-label">Password</label>
 		  <div class="col-10">
-		    <input class="form-control" type="password" value="hunter2" id="example-password-input">
+		    <input class="form-control" type="password" value="hunter2" id="example-password-input" name="jpp[password]">
 		  </div>
 		  <button id="register" class="btn btn-lg btn-primary btn-block" type="submit" onclick="sendEmail()">Registrati</button>
 		</div>
+		</form>
 	     
 
     </div><!-- /.container -->
-
-
-
 
 
 

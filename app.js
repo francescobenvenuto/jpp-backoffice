@@ -4,7 +4,7 @@ var express    = require("express"),
     path       = require("path"),
 	bodyParser = require("body-parser"),
 	mongoose   = require("mongoose"),
-	nodemailer = require('nodemailer')
+	nodemailer = require('nodemailer');
 
 // ES6 promises
 mongoose.Promise = Promise;
@@ -16,6 +16,12 @@ mongoose.connect("mongodb://localhost/jpp", {
 });
 
 var db = mongoose.connection;
+
+
+
+
+
+
 
 // mongodb error
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -34,12 +40,14 @@ var jppSchema = new mongoose.Schema({
 	email: String,
 	website: String,
 	telephone: String,
-	indirizzo: String,
-	numeroPartitaIva: String,
-	password: String
+	address: String,
+	vatNumber: String,
+	password: String,
+	date: {type: Date, dafault: Date.now},
+	active: Boolean
 });
 
-
+var Jpp = mongoose.model("Jpp", jppSchema);
 
 // Jpp.create(
 // 	{
@@ -51,8 +59,9 @@ var jppSchema = new mongoose.Schema({
 // 		indirizzo: "Via Paolo Sarpi 5",
 // 		numeroPartitaIva: "IT0123456789",
 // 		password: "test"
+// }, 
 
-// }, function(err, jpp){
+// function(err, jpp){
 // 	if(err){
 // 		console.log(err);
 // 	}
@@ -61,8 +70,6 @@ var jppSchema = new mongoose.Schema({
 // 			console.log(jpp);
 // 		}
 // });
-
-var Jpp = mongoose.model("Jpp", jppSchema);
 
 
 
@@ -95,13 +102,60 @@ app.get("/downloads", function(req, res){
 	res.render("downloads",{downloads:downloads});
 });
 
+
+app.get("/backoffice", function(req,res){
+	res.render("backoffice");
+});
+
+
+// NEW ROUTE
 app.get("/register", function(req, res){
 	res.render("register");
 });
 
 
+app.get("/thankyou", function(req, res){
+	res.render("thankyou");
+});
 
 
+app.get("/users", function(req, res){
+	Jpp.find({}, function(err, users){
+		if(err){
+			console.log("ERROR!!!");
+		} else {
+			res.render("users", {users: users})
+		}
+	});
+});
+
+
+// CREATE USER
+app.post("/users", function(req,res){
+	// create user
+	Jpp.create(req.body.jpp, function(err, newUser){
+		if(err){
+			res.render("register");
+		}
+		else{
+			// then redirect to homepage
+			res.redirect("thankyou");	
+		}
+	});
+
+});
+
+
+// SHOW USER ID
+app.get("/users/:id", function(req, res){
+	Jpp.findById(req.params.id, function(err, foundUser){
+		if(err){
+			res.redirect("/users");			
+		} else{
+			res.render("edituser", {user: foundUser});
+		}
+	});
+});
 
 // listening 
 app.listen(3001, 'localhost', function() {

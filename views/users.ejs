@@ -1,0 +1,40 @@
+<% include partials/header %>
+
+<div class="container">
+
+  <table class="table table-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>active</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Username</th>
+      <th>EDIT</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  <% users.forEach(function(user){ %>
+    <tr>
+      <td></td>
+      <td><input type="checkbox" value=""></td>
+      <td><%= user.name %></td>
+      <td><%= user.lastname %></td>
+      <td><%= user.email %></td>
+      <td><button type="button" class="btn btn-primary btn-sm"><a href="/users/<%= user._id %>" style="color:#ffffff;">EDIT</button></td>
+    </tr>
+<% }) %>      
+    
+  </tbody>
+</table>
+
+		
+
+    </div><!-- /.container -->
+
+
+
+
+
+<% include partials/footer %>
