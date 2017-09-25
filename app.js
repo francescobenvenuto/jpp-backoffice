@@ -1,3 +1,9 @@
+/**
+	Node.js Backoffice
+	More Info : http://francescobenvenuto.com/building-a-backoffice-system-in-node-js-and-mongodb/
+	Copyright (c) 2017 Francesco Benvenuto
+**/
+
 // ***************************************************
 // INITIAL SETUP 
 // ***************************************************
@@ -7,7 +13,18 @@ var express    = require("express"),
     path       = require("path"),
 	bodyParser = require("body-parser"),
 	mongoose   = require("mongoose"),
-	nodemailer = require('nodemailer');
+	nodemailer = require('nodemailer'),
+	methodOverride = require("method-override");
+
+
+
+
+app.set('views', __dirname + '/views');
+app.use(bodyParser.urlencoded({extended: true}));
+app.set("view engine", "ejs");
+app.use(express.static(__dirname + '/public'));
+app.use(methodOverride("_method"));
+
 
 // ES6 promises
 mongoose.Promise = Promise;
@@ -78,12 +95,6 @@ var Jpp = mongoose.model("Jpp", jppSchema);
 // });
 
 
-
-
-app.set('views', __dirname + '/views');
-app.use(bodyParser.urlencoded({extended: true}));
-app.set("view engine", "ejs");
-app.use(express.static(__dirname + '/public'));
 
 
 // ***************************************************
@@ -157,14 +168,45 @@ app.get("/users/:id", function(req, res){
 		if(err){
 			res.redirect("/users");			
 		} else{
-			res.render("edituser", {user: foundUser});
+			res.render("user_detail", {user: foundUser});
 		}
 	});
 });
 
+// EDIT USER ID
 
+app.get("/users/:id/edit", function(req, res){
+	Jpp.findById(req.params.id, function(err, foundUser){
+		if(err){
+			res.redirect("/users");
+		} else {
+			res.render("user_edit", {user: foundUser});
+		}
+	});
+});
 
+// UPDATE ROUTE USER
+app.put("/users/:id", function(req, res){
+	Jpp.findByIdAndUpdate(req.params.id, req.body.user, function(err, updatedUser){
+		if(err){
+			res.redirect("/users");
+		} else {
+			res.redirect("/users/" + req.params.id);
+		}
+	});
+});
 
+// DELETE ROUTE
+
+app.delete("/users/:id", function(req, res){
+	Jpp.findByIdAndRemove(req.params.id, function(err){
+		if(err){
+		res.redirect("/users");
+		} else {
+		res.redirect("/users");
+	}
+	})
+});
 
 
 // ***************************************************
