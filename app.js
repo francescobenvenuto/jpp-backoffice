@@ -1,4 +1,7 @@
-// setup 
+// ***************************************************
+// INITIAL SETUP 
+// ***************************************************
+
 var express    = require("express"),
 	app        = express(),
     path       = require("path"),
@@ -9,19 +12,16 @@ var express    = require("express"),
 // ES6 promises
 mongoose.Promise = Promise;
 
-// mongodb connection
+// ***************************************************
+// MONGODB CONNECTION 
+// ***************************************************
+
 mongoose.connect("mongodb://localhost/jpp", {
   useMongoClient: true,
   promiseLibrary: global.Promise
 });
 
 var db = mongoose.connection;
-
-
-
-
-
-
 
 // mongodb error
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -32,7 +32,9 @@ db.once('open', () => {
 });
 
 
-// DATABASE SCHEMA SETUP
+// ***************************************************
+// DB SCHEMA SETUP 
+// ***************************************************
 
 var jppSchema = new mongoose.Schema({
 	name: String,
@@ -44,10 +46,14 @@ var jppSchema = new mongoose.Schema({
 	vatNumber: String,
 	password: String,
 	date: {type: Date, dafault: Date.now},
-	active: Boolean
+	active: { type: Boolean, default: false }
 });
 
 var Jpp = mongoose.model("Jpp", jppSchema);
+
+// ***************************************************
+// TEST DATABASE BY CREATING ONE RECORD MANUALLY 
+// ***************************************************
 
 // Jpp.create(
 // 	{
@@ -74,17 +80,16 @@ var Jpp = mongoose.model("Jpp", jppSchema);
 
 
 
-
-
-
-
 app.set('views', __dirname + '/views');
-
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + '/public'));
 
-// routes
+
+// ***************************************************
+// ROUTES 
+// ***************************************************
+
 app.get("/", function(req,res){
 	res.render("landing");
 });
@@ -157,7 +162,15 @@ app.get("/users/:id", function(req, res){
 	});
 });
 
-// listening 
+
+
+
+
+
+// ***************************************************
+// LISTENING 
+// ***************************************************
+
 app.listen(3001, 'localhost', function() {
   console.log("server has started!!!");
 });

@@ -43,8 +43,6 @@ body {
 
 /* Sticky footer styles
 -------------------------------------------------- */
-
-
   
 }
 .footer {
@@ -65,12 +63,14 @@ body {
   flex-direction: column;
 }
 
+.backofficebox {
+  border: 1px solid #999999;
+  padding: 20px;
+} 
+
 /* Navbar
 -------------------------------------------------- */
 
-#app {
-  background-color: yellow;
-}
 
 .starter-template {
   padding-top: 100px;
