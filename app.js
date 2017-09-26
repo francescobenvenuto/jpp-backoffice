@@ -135,7 +135,7 @@ app.get("/thankyou", function(req, res){
 });
 
 
-app.get("/users", function(req, res){
+app.get("/backoffice/users", function(req, res){
 	User.find({}, function(err, users){
 		if(err){
 			console.log("ERROR!!!");
@@ -147,15 +147,15 @@ app.get("/users", function(req, res){
 
 
 // CREATE USER
-app.post("/users", function(req,res){
+app.post("/backoffice/users", function(req,res){
 	// create user
 	User.create(req.body.user, function(err, newUser){
 		if(err){
-			res.render("register");
+			res.render("../register");
 		}
 		else{
 			// then redirect to homepage
-			res.redirect("thankyou");	
+			res.redirect("../thankyou");	
 		}
 	});
 
@@ -163,10 +163,10 @@ app.post("/users", function(req,res){
 
 
 // SHOW USER ID
-app.get("/users/:id", function(req, res){
+app.get("/backoffice/users/:id", function(req, res){
 	User.findById(req.params.id, function(err, foundUser){
 		if(err){
-			res.redirect("/users");			
+			res.redirect("/backoffice/users");			
 		} else{
 			res.render("user_detail", {user: foundUser});
 		}
@@ -175,10 +175,10 @@ app.get("/users/:id", function(req, res){
 
 // EDIT USER ID
 
-app.get("/users/:id/edit", function(req, res){
+app.get("/backoffice/users/:id/edit", function(req, res){
 	User.findById(req.params.id, function(err, foundUser){
 		if(err){
-			res.redirect("/users");
+			res.redirect("/backoffice/users");
 		} else {
 			res.render("user_edit", {user: foundUser});
 		}
@@ -186,24 +186,24 @@ app.get("/users/:id/edit", function(req, res){
 });
 
 // UPDATE ROUTE USER
-app.put("/users/:id", function(req, res){
+app.put("/backoffice/users/:id", function(req, res){
 	User.findByIdAndUpdate(req.params.id, req.body.user, function(err, updatedUser){
 		if(err){
-			res.redirect("/users");
+			res.redirect("/backoffice/users");
 		} else {
-			res.redirect("/users/" + req.params.id);
+			res.redirect("/backoffice/users/" + req.params.id);
 		}
 	});
 });
 
 // DELETE ROUTE
 
-app.delete("/users/:id", function(req, res){
+app.delete("/backoffice/users/:id", function(req, res){
 	User.findByIdAndRemove(req.params.id, function(err){
 		if(err){
-		res.redirect("/users");
+		res.redirect("/backoffice/users");
 		} else {
-		res.redirect("/users");
+		res.redirect("/backoffice/users");
 	}
 	})
 });
