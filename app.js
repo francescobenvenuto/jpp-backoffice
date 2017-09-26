@@ -62,11 +62,11 @@ var jppSchema = new mongoose.Schema({
 	address: String,
 	vatNumber: String,
 	password: String,
-	date: {type: Date, dafault: Date.now},
+	date: {type: Date, default: Date.now},
 	active: { type: Boolean, default: false }
 });
 
-var Jpp = mongoose.model("Jpp", jppSchema);
+var User = mongoose.model("User", jppSchema);
 
 // ***************************************************
 // TEST DATABASE BY CREATING ONE RECORD MANUALLY 
@@ -136,7 +136,7 @@ app.get("/thankyou", function(req, res){
 
 
 app.get("/users", function(req, res){
-	Jpp.find({}, function(err, users){
+	User.find({}, function(err, users){
 		if(err){
 			console.log("ERROR!!!");
 		} else {
@@ -149,7 +149,7 @@ app.get("/users", function(req, res){
 // CREATE USER
 app.post("/users", function(req,res){
 	// create user
-	Jpp.create(req.body.jpp, function(err, newUser){
+	User.create(req.body.user, function(err, newUser){
 		if(err){
 			res.render("register");
 		}
@@ -164,7 +164,7 @@ app.post("/users", function(req,res){
 
 // SHOW USER ID
 app.get("/users/:id", function(req, res){
-	Jpp.findById(req.params.id, function(err, foundUser){
+	User.findById(req.params.id, function(err, foundUser){
 		if(err){
 			res.redirect("/users");			
 		} else{
@@ -176,7 +176,7 @@ app.get("/users/:id", function(req, res){
 // EDIT USER ID
 
 app.get("/users/:id/edit", function(req, res){
-	Jpp.findById(req.params.id, function(err, foundUser){
+	User.findById(req.params.id, function(err, foundUser){
 		if(err){
 			res.redirect("/users");
 		} else {
@@ -187,7 +187,7 @@ app.get("/users/:id/edit", function(req, res){
 
 // UPDATE ROUTE USER
 app.put("/users/:id", function(req, res){
-	Jpp.findByIdAndUpdate(req.params.id, req.body.user, function(err, updatedUser){
+	User.findByIdAndUpdate(req.params.id, req.body.user, function(err, updatedUser){
 		if(err){
 			res.redirect("/users");
 		} else {
@@ -199,7 +199,7 @@ app.put("/users/:id", function(req, res){
 // DELETE ROUTE
 
 app.delete("/users/:id", function(req, res){
-	Jpp.findByIdAndRemove(req.params.id, function(err){
+	User.findByIdAndRemove(req.params.id, function(err){
 		if(err){
 		res.redirect("/users");
 		} else {
