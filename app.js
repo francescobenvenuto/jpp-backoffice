@@ -8,14 +8,14 @@
 // INITIAL SETUP 
 // ***************************************************
 
-var express    = require("express"),
-	app        = express(),
-    path       = require("path"),
-	bodyParser = require("body-parser"),
-	mongoose   = require("mongoose"),
-	nodemailer = require('nodemailer'),
-	methodOverride = require("method-override");
-
+var express        = require("express"),
+	app            = express(),
+    path           = require("path"),
+	bodyParser     = require("body-parser"),
+	mongoose       = require("mongoose"),
+	nodemailer     = require('nodemailer'),
+	methodOverride = require("method-override"),
+    moment         = require('moment');
 
 
 

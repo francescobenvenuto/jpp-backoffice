@@ -3,56 +3,56 @@
 <div class="container">
 
       <div class="starter-template">
-        <h1>Bootstrap starter template</h1>
-        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+        <h1>Crea il tuo Account JPP</h1>
+        <p class="lead">Utilizza il form sottostante per creare il tuo Account JPP.<br> La tua richiesta verrà verificata e verrai notificato via email se la tua richiesta andrà a buon fine.</p>
       </div>
-		<form action="/backoffice/users" method="POST">
+		<form action="/backoffice/users" method="POST" onsubmit="return validateForm()">
 		<div class="form-group row">
 		  <label for="example-text-input" class="col-2 col-form-label">Nome</label>
 		  <div class="col-10">
-		    <input class="form-control" type="text" placeholder="Il tuo nome" id="example-text-input" name="user[name]">
+		    <input class="form-control" type="text" placeholder="Il tuo nome" id="example-text-input" name="user[name]" required oninvalid="this.setCustomValidity('Inserisci il Nome')" oninput="setCustomValidity('')"  />
 		  </div>
 		</div>
 		<div class="form-group row">
 		  <label for="example-search-input" class="col-2 col-form-label">Cognome</label>
 		  <div class="col-10">
-		    <input class="form-control" type="text" placeholder="Il tuo cognome" id="example-search-input" name="user[lastname]">
+		    <input class="form-control" type="text" placeholder="Il tuo cognome" id="example-search-input" name="user[lastname]" requiredoninvalid="this.setCustomValidity('Inserisci il Cognome')" oninput="setCustomValidity('')"  />
 		  </div>
 		</div>
 		<div class="form-group row">
 		  <label for="example-email-input" class="col-2 col-form-label">Email</label>
 		  <div class="col-10">
-		    <input class="form-control" type="email" placeholder="il tuo indirizzo email" id="example-email-input" name="user[email]">
+		    <input class="form-control" type="email" placeholder="il tuo indirizzo email" id="example-email-input" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" name="user[email]" required oninvalid="this.setCustomValidity('Inserisci indirizzo email)" oninput="setCustomValidity('')"  />
 		  </div>
 		</div>
 		<div class="form-group row">
 		  <label for="example-url-input" class="col-2 col-form-label">Website URL</label>
 		  <div class="col-10">
-		    <input class="form-control" type="url" placeholder="l'indirizzo del tuo sito Web" id="example-url-input" name="user[website]">
+		    <input class="form-control" type="url" placeholder="l'indirizzo del tuo sito Web" id="example-url-input" name="user[website]" pattern="https?://.+" required oninvalid="this.setCustomValidity('Inserisci il tuo sito web')" oninput="setCustomValidity('')"  />
 		  </div>
 		</div>
 		<div class="form-group row">
-		  <label for="example-tel-input" class="col-2 col-form-label">Telephone</label>
+		  <label for="example-tel-input" class="col-2 col-form-label">Telefono</label>
 		  <div class="col-10">
-		    <input class="form-control" type="tel" placeholder="il tuo numero di telefono" id="example-tel-input" name="user[telephone]">
+		    <input class="form-control" type="tel" placeholder="il tuo numero di telefono" id="example-tel-input" name="user[telephone]" required oninvalid="this.setCustomValidity('Inserisci il Telefono')" oninput="setCustomValidity('')"  />
 		  </div>
 		</div>
 		<div class="form-group row">
 		  <label for="example-text-input" class="col-2 col-form-label">Indirizzo</label>
 		  <div class="col-10">
-		    <input class="form-control" type="text" placeholder="Il tuo indirizzo" value="" id="example-text-input" name="user[address]">
+		    <input class="form-control" type="text" placeholder="Il tuo indirizzo" id="example-text-input" name="user[address]" required oninvalid="this.setCustomValidity('Inserisci indirizzo')" oninput="setCustomValidity('')"  />
 		  </div>
 		</div>
 		<div class="form-group row">
 		  <label for="example-date-input" class="col-2 col-form-label">Numero di Partita IVA</label>
 		  <div class="col-10">
-		    <input class="form-control" type="text" placeholder="IT123456789" id="example-date-input" name="user[vatNumber]">
+		    <input class="form-control" type="text" placeholder="IT123456789" id="example-date-input" name="user[vatNumber]" required oninvalid="this.setCustomValidity('Inserisci Partita IVA')" oninput="setCustomValidity('')"  />
 		  </div>
 		</div>
 		<div class="form-group row">
 		  <label for="example-password-input" class="col-2 col-form-label">Password</label>
 		  <div class="col-10">
-		    <input class="form-control" type="password" id="example-password-input" name="user[password]">
+		    <input class="form-control" type="password" id="example-password-input" name="user[password]" required oninvalid="this.setCustomValidity('Inserisci password')" oninput="setCustomValidity('')"  />
 		  </div>
 		  <button id="register" class="btn btn-lg btn-primary btn-block" type="submit">Registrati</button>
 		</div>
@@ -64,3 +64,4 @@
 
 
 <% include partials/footer %>
+
