@@ -5,11 +5,11 @@
     <table class="table table-striped table-bordered" style="margin-top: 30px;">
     <thead class="thead-inverse">
       <tr>
-        <th>ID utente</th>
-        <th>Data</th>
-        <th>Nome</th>
-        <th>Cognome</th>
-        <th>Email</th>
+        <th>#</th>
+        <th>Attivazione</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Username</th>
         <th>Modifica</th>
       </tr>
     </thead>
@@ -17,12 +17,12 @@
 
     <% users.forEach(function(user){ %>
       <tr>
-        <td><%= user._id %></td>
-        <td><%= user.date %></td>
+        <td></td>
+        <td><input type="checkbox" value=""></td>
         <td><%= user.name %></td>
         <td><%= user.lastname %></td>
         <td><%= user.email %></td>
-        <td><button type="button" class="btn btn-primary btn-sm"><a href="/backoffice/users/<%= user._id %>" style="color:#ffffff;">Vedi Dettaglio Utente</a></button></td>
+        <td><button type="button" class="btn btn-primary btn-sm"><a href="/users/<%= user._id %>" style="color:#ffffff;">Vedi Dettaglio Utente</a></button></td>
       </tr>
   <% }) %>      
       
