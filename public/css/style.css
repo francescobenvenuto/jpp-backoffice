@@ -5,6 +5,7 @@ html {
 
 body {
   background-color: #eee;
+  font-family: "acumin-pro-condensed",sans-serif;
 }
 
 .form-signin {
@@ -82,7 +83,10 @@ body {
 #register {
   margin:30px 15px 30px 15px;
 }
-
+ 
+#mainmenu {
+  font-family: "acumin-pro-condensed",sans-serif;
+}
 
 
 /* CUSTOMIZE THE CAROUSEL
