@@ -212,8 +212,12 @@ app.delete("/backoffice/users/:id", function(req, res){
 // LISTENING 
 // ***************************************************
 
-app.listen(3001, 'localhost', function() {
-  console.log("server has started!!!");
-});
+// app.listen(3001, 'localhost', function() {
+//   console.log("server has started!!!");
+// });
 
+
+http.listen(process.env.PORT || 3000, function(){
+  console.log('listening on', http.address().port);
+});
 
